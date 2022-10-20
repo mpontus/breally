@@ -36,6 +36,10 @@ export const postNewsletterResponseSchema = t.type({
   message: t.string,
 });
 
+export const errorResponseSchema = t.type({
+  message: t.string,
+});
+
 export const decodeToPromise =
   <A, O, I>(validator: t.Type<A, O, I>) =>
   (input: I): Promise<A> =>

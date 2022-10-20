@@ -1,9 +1,8 @@
 import type { GetStaticProps, NextPage } from "next";
-import { ApiClient } from "../lib/api";
 import { Hero } from "../lib/components/Hero";
 import { Newsletter } from "../lib/components/Newsletter";
 import { Testimonial } from "../lib/components/Testimonial";
-import { AppProps } from "./_app";
+import { api, AppProps } from "./_app";
 
 type Section =
   | { type: "hero"; text: string; img: string }
@@ -43,12 +42,6 @@ const Home: NextPage<PageProps> = ({ sections }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const baseUrl = process.env.BREALLY_API_BASE_URL ?? "";
-  const api = new ApiClient(baseUrl, {
-    username: process.env.BREALLY_API_USERNAME ?? "",
-    password: process.env.BREALLY_API_PASSWORD ?? "",
-  });
-
   const pages = await api.getPages();
   const home = pages.find((page) => page.url === "/");
 

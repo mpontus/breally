@@ -1,6 +1,7 @@
 import * as t from "io-ts";
 import {
   decodeToPromise,
+  errorResponseSchema,
   getPageResponseSchema,
   getPagesResponseSchema,
   postNewsletterResponseSchema,
@@ -62,6 +63,16 @@ export class ApiClient {
     };
 
     const response = await fetch(this.baseUrl + path, options);
+
+    if (200 > response.status || response.status >= 300) {
+      throw await response
+        .json()
+        .then(decodeToPromise(errorResponseSchema))
+        .then(
+          ({ message }) => new Error(message),
+          () => new Error(`Invalid response status: ${response.status}`)
+        );
+    }
 
     return await response.json();
   }
