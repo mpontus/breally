@@ -1,8 +1,7 @@
 //Your customizations must come before bootstrap import
 
 $enable-shadows: true;
-$primary: rgb(0, 19, 223);
-
+$primary: #DAC2F2;
 
 $font-family-base: "Inter, sans-serif";
 $body-color:  #231E1E;
@@ -35,5 +34,13 @@ $font-sizes: (
   7: $font-size-base * 0.875,
 );
 
+$btn-padding-x: $spacer * 4;
+$btn-border-radius: $font-size-base * 2;
+
+$input-padding-x: $spacer * 1.5;
+$input-border-radius: $font-size-base * 2;
+$input-bg: #F1F0F0;
+$input-border-width: 0;
+$input-box-shadow: none;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
