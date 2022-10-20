@@ -4,8 +4,23 @@ $enable-shadows: true;
 $primary: rgb(0, 19, 223);
 
 
-$body-color:  #333;
-$body-bg: #f2f2f2;
 $font-family-base: "Inter, sans-serif";
+$body-color:  #231E1E;
+$nav-link-color:  #231E1E;
+$display-font-weight: 600;
+$body-bg: #fff;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4),
+  7: ($spacer * 6),
+  8: ($spacer * 8),
+);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
