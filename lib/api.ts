@@ -21,7 +21,9 @@ export class ApiClient {
   constructor(
     private readonly baseUrl: string,
     private readonly credentials: Credentials
-  ) {}
+  ) {
+    this.baseUrl = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+  }
 
   getPages(): Promise<GetPagesResponse> {
     return this.request("GET", "/pages").then(
@@ -36,14 +38,14 @@ export class ApiClient {
   }
 
   postNewsletter(email: string) {
-    return this.request("GET", "/newsletter", { email }).then(
+    return this.request("POST", "/newsletter", { email }).then(
       decodeToPromise(postNewsletterResponseSchema)
     );
   }
 
   private async request(
     method: string,
-    url: string,
+    path: string,
     body?: unknown
   ): Promise<unknown> {
     const options = {
@@ -59,7 +61,7 @@ export class ApiClient {
       },
     };
 
-    const response = await fetch(url, options);
+    const response = await fetch(this.baseUrl + path, options);
 
     return await response.json();
   }
