@@ -1,0 +1,47 @@
+name: Checks
+on: [push]
+
+env:
+  NEXT_PUBLIC_BREALLY_API_BASE_URL: https://adchitects-cms.herokuapp.com
+  NEXT_PUBLIC_BREALLY_API_USERNAME: ${{ secrets.BREALLY_API_USERNAME }}
+  NEXT_PUBLIC_BREALLY_API_PASSWORD: ${{ secrets.BREALLY_API_PASSWORD }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-cache_yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cache_yarn-
+            ${{ runner.os }}-
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn
+
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn build
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn lint
