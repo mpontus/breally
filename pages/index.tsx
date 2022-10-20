@@ -10,12 +10,7 @@ import logo from "../public/logo.svg";
 const Home: NextPage = () => {
   return (
     <>
-      <Navbar
-        bg="light"
-        expand="md"
-        className="p-0 my-4"
-        style={{ height: 48 }}
-      >
+      <Navbar bg="light" expand="lg" className="py-4 py-lg-5">
         <Container>
           <Navbar.Brand>
             <Image src={logo} alt="Logo" />
@@ -35,13 +30,13 @@ const Home: NextPage = () => {
         </Container>
       </Navbar>
       <Container>
-        <Row className="justify-content-md-center py-4 my-8">
-          <Col xs lg="5" className="d-flex align-items-center px-3">
-            <h1 className="display-5">
+        <Row className="justify-content-md-center py-6 py-lg-8">
+          <Col lg="5" className="d-flex align-items-center px-2 px-4-lg">
+            <h1 className="display-5 ">
               In oculis quidem rerum facilis est et aperta.
             </h1>
           </Col>
-          <Col xs lg="5">
+          <Col xs lg="5" className="p-2">
             <Ratio aspectRatio={384 / 516}>
               <Image
                 fill
@@ -53,13 +48,13 @@ const Home: NextPage = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="bg-dark text-white fs-4 py-8">
+      <Container fluid className="bg-dark text-white fs-4 py-6 py-8-lg">
         <Row className="justify-content-md-center">
           <Col xs lg="8">
-            <div className="mb-6">
+            <div className="mb-5 mb-6-lg">
               <Image src={quotationMark} alt="Quotation mark" />
             </div>
-            <p className="mb-7">
+            <p className="mb-4 mb-7-lg">
               Torquatos nostros? quos dolores eos, qui studiose antiqua
               persequeris, claris et quasi naturalem. In quo enim inter
               mediocrem animadversionem atque insitam in malis dolor, non
@@ -67,14 +62,14 @@ const Home: NextPage = () => {
             </p>
             <p className="text-secondary">John Doe, Street Artist</p>
           </Col>
-          <Col xs lg="1" />
+          <Col lg="1" />
         </Row>
       </Container>
-      <Container id="newsletter" fluid className="fs-7 py-8">
+      <Container id="newsletter" fluid className="fs-7 py-6 py-8-lg">
         <Row className="justify-content-md-center">
-          <Col xs lg="6" className="text-center">
-            <h1 className="display-6 mb-6">Sign up for Newsletter</h1>
-            <Form className="d-grid gap-2 d-md-flex mb-5">
+          <Col xs lg="6" className="px-5 text-center">
+            <h1 className="display-6 mb-4 mb-6-lg">Sign up for Newsletter</h1>
+            <Form className="d-grid gap-2 d-md-flex mb-3 mb-5-lg">
               <Form.Control type="email" placeholder="Type your email" />
               <Button variant="primary" type="submit" className="d-block">
                 Submit
