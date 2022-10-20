@@ -39,6 +39,7 @@ $line-height-base: 1.7;
 $btn-padding-x: $spacer * 3.75;
 $btn-padding-y: $spacer * 0.75;
 $btn-border-radius: $font-size-base * 2;
+$btn-white-space: nowrap;
 
 $input-padding-x: $spacer * 1.5;
 $input-border-radius: $font-size-base * 2;
@@ -46,7 +47,6 @@ $input-bg: #F1F0F0;
 $input-border-width: 0;
 $input-box-shadow: none;
 
-$navbar-brand-margin-end: $spacer * 5;
 $navbar-nav-link-padding-x: $spacer * 1.5;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
