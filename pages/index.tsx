@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import Image from "next/future/image";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Ratio, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import heroImage from "../lib/hero.png";
 import quotationMark from "../public/quotation-mark.svg";
 import logo from "../public/logo.svg";
 
@@ -41,7 +40,14 @@ const Home: NextPage = () => {
             </h1>
           </Col>
           <Col xs lg="5">
-            <Image src={heroImage} alt="Hero image" width={516} height={384} />
+            <Ratio aspectRatio={384 / 516}>
+              <Image
+                fill
+                style={{ objectFit: "cover" }}
+                src="https://i.ibb.co/G9bfTPH/breally-img.png"
+                alt="Hero image"
+              />
+            </Ratio>
           </Col>
         </Row>
       </Container>
