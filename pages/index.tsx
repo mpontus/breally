@@ -1,36 +1,22 @@
 import type { GetStaticProps, NextPage } from "next";
-import Image from "next/future/image";
-import Nav from "react-bootstrap/Nav";
 import { ApiClient } from "../lib/api";
 import { Hero } from "../lib/components/Hero";
-import { Layout } from "../lib/components/Layout";
 import { Newsletter } from "../lib/components/Newsletter";
 import { Testimonial } from "../lib/components/Testimonial";
-import logo from "../public/logo.svg";
+import { AppProps } from "./_app";
 
 type Section =
   | { type: "hero"; text: string; img: string }
   | { type: "testimonial"; text: string; author: string }
   | { type: "newsletter" };
 
-export interface PageProps {
-  pages: Array<{
-    id: string;
-    url: string;
-  }>;
+export interface PageProps extends AppProps {
   sections: Array<Section>;
 }
 
-const Home: NextPage<PageProps> = ({ pages, sections }) => {
+const Home: NextPage<PageProps> = ({ sections }) => {
   return (
-    <Layout
-      logo={<Image src={logo} alt="Logo" />}
-      nav={pages.map(({ id, url }) => (
-        <Nav.Link key={id} href={url}>
-          {id}
-        </Nav.Link>
-      ))}
-    >
+    <>
       {sections.map((section, i) => {
         switch (section.type) {
           case "hero":
@@ -52,7 +38,7 @@ const Home: NextPage<PageProps> = ({ pages, sections }) => {
             return undefined;
         }
       })}
-    </Layout>
+    </>
   );
 };
 
