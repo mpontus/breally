@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -54,6 +54,22 @@ const Home: NextPage = () => {
             <p className="text-secondary">John Doe, Street Artist</p>
           </Col>
           <Col xs lg="1" />
+        </Row>
+      </Container>
+      <Container fluid className="fs-7 py-8">
+        <Row className="justify-content-md-center">
+          <Col xs lg="6" className="text-center">
+            <h1 className="display-6 mb-6">Sign up for Newsletter</h1>
+            <Form className="d-grid gap-2 d-md-flex mb-5">
+              <Form.Control type="email" placeholder="Type your email" />
+              <Button variant="primary" type="submit" className="d-block">
+                Submit
+              </Button>
+            </Form>
+            <p className="text-success">
+              Thank you for signing up for the Breally newsletter.
+            </p>
+          </Col>
         </Row>
       </Container>
     </>
