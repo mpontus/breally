@@ -20,15 +20,19 @@ export const Layout: React.FC<LayoutProps> = (props) => {
           <title>{title}</title>
         </Head>
       )}
-      <Navbar bg="light" expand="lg" className="py-4 py-lg-5">
+      <Navbar bg="light" expand="lg" className="py-4">
         <Container>
           <Navbar.Brand>{logo}</Navbar.Brand>
+          <Button
+            variant="primary"
+            href="#newsletter"
+            className="order-lg-last"
+          >
+            Contact us
+          </Button>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">{nav}</Nav>
-            <Button variant="primary" href="#newsletter">
-              Contact us
-            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

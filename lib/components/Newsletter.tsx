@@ -39,12 +39,12 @@ export const Newsletter: React.FC = () => {
   );
 
   return (
-    <Container id="newsletter" fluid className="fs-7 py-6 py-8-lg">
+    <Container id="newsletter" className="fs-7 py-6 py-lg-8">
       <Row className="justify-content-md-center">
-        <Col xs lg="6" className="px-5 text-center">
-          <h1 className="display-6 mb-4 mb-6-lg">Sign up for Newsletter</h1>
+        <Col lg="6" className="text-center">
+          <h1 className="display-6 mb-4 mb-lg-6">Sign up for Newsletter</h1>
           <Form
-            className="d-grid gap-2 d-md-flex mb-3 mb-5-lg"
+            className="d-grid gap-2 d-md-flex mb-3 mb-lg-5"
             onSubmit={handleSubmit}
           >
             <Form.Control name="email" placeholder="Type your email" />

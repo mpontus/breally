@@ -9,16 +9,18 @@ export interface TestimonialProps {
   author: string;
 }
 export const Testimonial: React.FC<TestimonialProps> = ({ text, author }) => (
-  <Container fluid className="bg-dark text-white fs-4 py-6 py-8-lg">
-    <Row className="justify-content-md-center">
-      <Col xs lg="8">
-        <div className="mb-5 mb-6-lg">
-          <Image src={quotationMark} alt="Quotation mark" />
-        </div>
-        <p className="mb-4 mb-7-lg">{text}</p>
-        <p className="text-secondary">{author}</p>
-      </Col>
-      <Col lg="1" />
-    </Row>
+  <Container fluid className="bg-dark text-white fs-4 py-6 py-lg-8">
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col lg="9" className="px-2 px-lg-4">
+          <div className="mb-5 mb-lg-6">
+            <Image src={quotationMark} alt="Quotation mark" />
+          </div>
+          <p className="mb-4 mb-lg-7">{text}</p>
+          <p className="text-secondary">{author}</p>
+        </Col>
+        <Col lg="1" />
+      </Row>
+    </Container>
   </Container>
 );

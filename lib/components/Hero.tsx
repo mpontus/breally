@@ -10,10 +10,10 @@ export interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ text, image }) => (
   <Container>
     <Row className="justify-content-md-center py-6 py-lg-8">
-      <Col lg="5" className="d-flex align-items-center px-2 px-4-lg">
+      <Col lg="5" className="d-flex align-items-center px-2 px-lg-4">
         <h1 className="display-5 ">{text}</h1>
       </Col>
-      <Col xs lg="5" className="p-2">
+      <Col lg="5" className="p-2">
         <Ratio aspectRatio={384 / 516}>
           <Image
             fill
