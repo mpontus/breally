@@ -28,7 +28,9 @@ const Home: NextPage = () => {
               <Nav.Link href="#">Resources</Nav.Link>
               <Nav.Link href="#">About</Nav.Link>
             </Nav>
-            <Button variant="primary">Contact us</Button>
+            <Button variant="primary" href="#newsletter">
+              Contact us
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -68,7 +70,7 @@ const Home: NextPage = () => {
           <Col xs lg="1" />
         </Row>
       </Container>
-      <Container fluid className="fs-7 py-8">
+      <Container id="newsletter" fluid className="fs-7 py-8">
         <Row className="justify-content-md-center">
           <Col xs lg="6" className="text-center">
             <h1 className="display-6 mb-6">Sign up for Newsletter</h1>
