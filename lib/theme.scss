@@ -6,8 +6,10 @@ $primary: #DAC2F2;
 $font-family-base: "Inter, sans-serif";
 $body-color:  #231E1E;
 $nav-link-color:  #231E1E;
-$display-font-weight: 500;
 $body-bg: #fff;
+
+$display-font-weight: 500;
+$display-line-height: 4rem;
 
 $spacer: 1rem;
 $spacers: (
@@ -32,6 +34,7 @@ $font-sizes: (
   6: $font-size-base,
   7: $font-size-base * 0.875,
 );
+$line-height-base: 1.7;
 
 $btn-padding-x: $spacer * 3.75;
 $btn-padding-y: $spacer * 0.75;
