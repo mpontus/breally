@@ -9,7 +9,7 @@ export interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ text, image }) => (
   <Container>
-    <Row className="justify-content-md-center py-6 py-lg-8">
+    <Row className="justify-content-md-center py-4 py-lg-8">
       <Col lg="5" className="d-flex align-items-center px-2 px-lg-4">
         <h1 className="display-5 ">{text}</h1>
       </Col>

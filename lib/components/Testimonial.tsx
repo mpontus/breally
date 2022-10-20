@@ -13,11 +13,11 @@ export const Testimonial: React.FC<TestimonialProps> = ({ text, author }) => (
     <Container>
       <Row className="justify-content-md-center">
         <Col lg="9" className="px-2 px-lg-4">
-          <div className="mb-5 mb-lg-6">
+          <div className="mb-4 mb-lg-6">
             <Image src={quotationMark} alt="Quotation mark" />
           </div>
           <p className="mb-4 mb-lg-7">{text}</p>
-          <p className="text-secondary">{author}</p>
+          <p className="mb-0 text-secondary">{author}</p>
         </Col>
         <Col lg="1" />
       </Row>
