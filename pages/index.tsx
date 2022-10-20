@@ -24,6 +24,7 @@ export interface PageProps {
 const Home: NextPage<PageProps> = ({ pages, sections }) => {
   return (
     <Layout
+      title="Breally - Home"
       logo={<Image src={logo} alt="Logo" />}
       nav={pages.map(({ id, url }) => (
         <Nav.Link key={id} href={url}>
