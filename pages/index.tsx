@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
-import Image from "next/image";
+import Image from "next/future/image";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import heroImage from "../lib/hero.png";
 import quotationMark from "../public/quotation-mark.svg";
+import logo from "../public/logo.svg";
 
 const Home: NextPage = () => {
   return (
@@ -17,13 +18,18 @@ const Home: NextPage = () => {
         style={{ height: 48 }}
       >
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand>
+            <Image src={logo} alt="Logo" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="#">Products</Nav.Link>
+              <Nav.Link href="#">Solutions</Nav.Link>
+              <Nav.Link href="#">Resources</Nav.Link>
+              <Nav.Link href="#">About</Nav.Link>
             </Nav>
+            <Button variant="primary">Contact us</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
