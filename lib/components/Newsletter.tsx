@@ -31,7 +31,7 @@ export const useNewsletter = (): [NewsletterState, (email: string) => void] => {
             error:
               err instanceof Error
                 ? err.message
-                : "Unknown application error occurredj",
+                : "Unknown application error occurred",
           })
       );
     },
@@ -44,8 +44,7 @@ export const useNewsletter = (): [NewsletterState, (email: string) => void] => {
 export const Newsletter: React.FC = () => {
   const [state, submitEmail] = useNewsletter();
   const handleSubmit = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async (e: React.SyntheticEvent) => {
+    (e: React.SyntheticEvent) => {
       e.preventDefault();
       const { email } = e.target as EventTarget & {
         email: EventTarget & HTMLInputElement;
