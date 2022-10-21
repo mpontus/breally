@@ -3,39 +3,56 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { AppContext } from "../context";
 
-interface State {
+export interface NewsletterState {
+  loading: boolean;
   message?: string;
   error?: string;
 }
 
-export const Newsletter: React.FC = () => {
+export const useNewsletter = (): [NewsletterState, (email: string) => void] => {
+  const [state, setState] = useState<NewsletterState>({ loading: false });
   const { api } = useContext(AppContext);
-  const [{ message, error }, setState] = useState<State>({});
+  const handleSignup = useCallback(
+    (email: string) => {
+      if (api === undefined || state.loading) {
+        return;
+      }
+
+      setState({ loading: true });
+      api.postNewsletter(email).then(
+        ({ message }) =>
+          setState({
+            loading: false,
+            message,
+          }),
+        (err) =>
+          setState({
+            loading: false,
+            error:
+              err instanceof Error
+                ? err.message
+                : "Unknown application error occurredj",
+          })
+      );
+    },
+    [api, state]
+  );
+
+  return [state, handleSignup];
+};
+
+export const Newsletter: React.FC = () => {
+  const [state, submitEmail] = useNewsletter();
   const handleSubmit = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (e: React.SyntheticEvent) => {
       e.preventDefault();
-
-      if (api === undefined) {
-        return;
-      }
-
-      try {
-        setState({});
-        const { email } = e.target as EventTarget & {
-          email: EventTarget & HTMLInputElement;
-        };
-        const { message } = await api.postNewsletter(email.value);
-        setState({ message });
-      } catch (err) {
-        if (err instanceof Error) {
-          setState({ error: err.message });
-        } else {
-          setState({ error: "Unknown application error occurred" });
-        }
-      }
+      const { email } = e.target as EventTarget & {
+        email: EventTarget & HTMLInputElement;
+      };
+      submitEmail(email.value);
     },
-    [api]
+    [submitEmail]
   );
 
   return (
@@ -47,13 +64,22 @@ export const Newsletter: React.FC = () => {
             className="d-grid gap-2 d-md-flex mb-3 mb-lg-5"
             onSubmit={handleSubmit}
           >
-            <Form.Control name="email" placeholder="Type your email" />
-            <Button variant="primary" type="submit" className="d-block">
+            <Form.Control
+              name="email"
+              placeholder="Type your email"
+              disabled={state.loading}
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              className="d-block"
+              disabled={state.loading}
+            >
               Submit
             </Button>
           </Form>
-          {message && <p className="text-success">{message}</p>}
-          {error && <p className="text-danger">{error}</p>}
+          {state.message && <p className="text-success">{state.message}</p>}
+          {state.error && <p className="text-danger">{state.error}</p>}
         </Col>
       </Row>
     </Container>
